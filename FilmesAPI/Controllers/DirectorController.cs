@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FilmesAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DirectorController : ControllerBase
     {
         private readonly AppDbContext _context;

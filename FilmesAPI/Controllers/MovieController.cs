@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FilmesAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MovieController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -16,6 +16,7 @@ namespace FilmesAPI.Controllers
             _context = context;
         }
 
+        // Get all Movies and directors
         [HttpGet("GetAllMovies")]
         public IActionResult GetAll()
         {
@@ -24,6 +25,7 @@ namespace FilmesAPI.Controllers
             return Ok(movies);
         }
 
+        // Get movie by Id
         [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
@@ -34,6 +36,7 @@ namespace FilmesAPI.Controllers
             return Ok(movie);
         }
 
+        // Get movie by Title
         [HttpGet("{title}")]
         public IActionResult GetByTitle(string title)
         {
@@ -42,6 +45,26 @@ namespace FilmesAPI.Controllers
             if (movie is null) return NotFound("Can't find the movie");
 
             return Ok(movie);
+        }
+
+        // Get movie by Genre
+        [HttpGet("Genre")]
+        public IActionResult GetByGender(EnumGenre genre)
+        {
+            var movies = _context.Movies.Where(m => m.Genre == genre).ToList();
+
+            if (movies is null) return BadRequest();
+
+            return Ok(movies);
+        }
+
+        // Get movie by Director
+        [HttpGet("getBy/{directorname}")]
+        public IActionResult GetByDirector(string directorname) 
+        {
+            var movies = _context.Movies.Where(m => m.Director.Name == directorname).ToList();
+
+            return Ok(movies);
         }
 
         [HttpPost]
