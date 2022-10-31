@@ -19,7 +19,7 @@ namespace FilmesAPI.Controllers
         [HttpGet("GetAllDirectors")]
         public IActionResult GetAll()
         {
-            var directors = _context.Directors.Include(d => d.Movies).Take(10).ToList();
+            var directors = _context.Directors.Include(d => d.Movies).Take(10).ToList().OrderBy(x => x.Name);
 
             return Ok(directors);
         }

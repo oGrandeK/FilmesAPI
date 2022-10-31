@@ -20,7 +20,7 @@ namespace FilmesAPI.Controllers
         [HttpGet("GetAllMovies")]
         public IActionResult GetAll()
         {
-            var movies = _context.Movies.Include(d => d.Director).Take(10).ToList();
+            var movies = _context.Movies.Include(d => d.Director).Take(10).ToList().OrderBy(x => x.Title);
 
             return Ok(movies);
         }
@@ -40,7 +40,7 @@ namespace FilmesAPI.Controllers
         [HttpGet("{title}")]
         public IActionResult GetByTitle(string title)
         {
-            var movie = _context.Movies.FirstOrDefault(m => m.Title == title);
+            var movie = _context.Movies.Take(10).Where(m => m.Title == title);
 
             if (movie is null) return NotFound("Can't find the movie");
 
@@ -51,7 +51,7 @@ namespace FilmesAPI.Controllers
         [HttpGet("Genre")]
         public IActionResult GetByGender(EnumGenre genre)
         {
-            var movies = _context.Movies.Where(m => m.Genre == genre).ToList();
+            var movies = _context.Movies.Where(m => m.Genre == genre).ToList().OrderBy(x => x.Title);
 
             if (movies is null) return BadRequest();
 
@@ -62,7 +62,7 @@ namespace FilmesAPI.Controllers
         [HttpGet("getBy/{directorname}")]
         public IActionResult GetByDirector(string directorname) 
         {
-            var movies = _context.Movies.Where(m => m.Director.Name == directorname).ToList();
+            var movies = _context.Movies.Where(m => m.Director.Name == directorname).ToList().OrderBy(x => x.Director);
 
             return Ok(movies);
         }
