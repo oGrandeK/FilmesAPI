@@ -2,6 +2,7 @@
 using FilmesAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace FilmesAPI.Controllers
 {
@@ -17,11 +18,14 @@ namespace FilmesAPI.Controllers
         }
 
         [HttpGet("GetAllDirectors")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll(int? page)
         {
+            const int itensForPage = 3;
+            int pageNumber = (page ?? 1);
+
             var directors = _context.Directors.Include(d => d.Movies).Take(10).ToList().OrderBy(x => x.Name);
 
-            return Ok(directors);
+            return Ok(await directors.ToPagedListAsync(pageNumber, itensForPage));
         }
 
         [HttpPost]

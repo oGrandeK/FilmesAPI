@@ -1,7 +1,9 @@
 ﻿using FilmesAPI.Data;
 using FilmesAPI.Models;
+using FilmesAPI.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace FilmesAPI.Controllers
 {
@@ -16,13 +18,14 @@ namespace FilmesAPI.Controllers
             _context = context;
         }
 
-        // Get all Movies and directors
+        // Get all Movies
         [HttpGet("GetAllMovies")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllMovies(int? page)
         {
-            var movies = _context.Movies.Include(d => d.Director).Take(10).ToList().OrderBy(x => x.Title);
+            const int itensForPage = 3;
+            int pageNumber = (page ?? 1);
 
-            return Ok(movies);
+            return Ok(await _context.Movies.ToPagedListAsync(pageNumber, itensForPage));
         }
 
         // Get movie by Id
@@ -38,33 +41,41 @@ namespace FilmesAPI.Controllers
 
         // Get movie by Title
         [HttpGet("{title}")]
-        public IActionResult GetByTitle(string title)
+        public async Task<IActionResult> GetByTitle(string title, int? page)
         {
-            var movie = _context.Movies.Take(10).Where(m => m.Title == title);
+            const int itensForPage = 3;
+            int pageNumber = (page ?? 1);
+
+            var movie = _context.Movies.Where(m => m.Title == title);
 
             if (movie is null) return NotFound("Can't find the movie");
 
-            return Ok(movie);
+            return Ok(await movie.ToPagedListAsync(pageNumber, itensForPage));
         }
 
         // Get movie by Genre
         [HttpGet("Genre")]
-        public IActionResult GetByGender(EnumGenre genre)
+        public async Task<IActionResult> GetByGender(EnumGenre genre, int? page)
         {
+            const int itensForPage = 3;
+            int pageNumber = (page ?? 1);
+
             var movies = _context.Movies.Where(m => m.Genre == genre).ToList().OrderBy(x => x.Title);
 
             if (movies is null) return BadRequest();
 
-            return Ok(movies);
+            return Ok(await movies.ToPagedListAsync(pageNumber, itensForPage));
         }
 
         // Get movie by Director
         [HttpGet("getBy/{directorname}")]
-        public IActionResult GetByDirector(string directorname) 
+        public async Task<IActionResult> GetByDirector(string directorname, int? page) 
         {
+            const int itensForPage = 3;
+            int pageNumber = (page ?? 1);
             var movies = _context.Movies.Where(m => m.Director.Name == directorname).ToList().OrderBy(x => x.Director);
 
-            return Ok(movies);
+            return Ok(await movies.ToPagedListAsync(pageNumber, itensForPage));
         }
 
         [HttpPost]

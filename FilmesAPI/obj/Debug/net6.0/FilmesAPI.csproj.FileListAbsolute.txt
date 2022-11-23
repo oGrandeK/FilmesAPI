@@ -34,3 +34,10 @@ D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\refint\FilmesAPI.dll
 D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\FilmesAPI.pdb
 D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\FilmesAPI.genruntimeconfig.cache
 D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\ref\FilmesAPI.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets\msbuild.FilmesAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.FilmesAPI.props
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.FilmesAPI.props
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.FilmesAPI.props
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets.pack.json
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\JetBrains.Annotations.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\X.PagedList.dll
