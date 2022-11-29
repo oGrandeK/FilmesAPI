@@ -20,7 +20,7 @@ namespace FilmesAPI.Controllers
         }
 
         // Get all Movies
-        [HttpGet("GetAllMovies")]
+        [HttpGet()]
         public async Task<IActionResult> GetAllMovies(int? page)
         {
             const int itensForPage = 3;
