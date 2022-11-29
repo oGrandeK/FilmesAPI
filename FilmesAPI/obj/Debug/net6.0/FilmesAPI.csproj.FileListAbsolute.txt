@@ -41,3 +41,16 @@ D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets\msbuild
 D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\obj\Debug\net6.0\staticwebassets.pack.json
 D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\JetBrains.Annotations.dll
 D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\X.PagedList.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\WorkSpace\CSharp\FilmesAPI\FilmesAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

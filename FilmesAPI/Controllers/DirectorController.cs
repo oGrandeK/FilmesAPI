@@ -1,11 +1,13 @@
 ﻿using FilmesAPI.Data;
 using FilmesAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
 namespace FilmesAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class DirectorController : ControllerBase
@@ -17,13 +19,13 @@ namespace FilmesAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("GetAllDirectors")]
+        [HttpGet()]
         public async Task<IActionResult> GetAll(int? page)
         {
             const int itensForPage = 3;
-            int pageNumber = (page ?? 1);
+            int pageNumber = page ?? 1;
 
-            var directors = _context.Directors.Include(d => d.Movies).Take(10).ToList().OrderBy(x => x.Name);
+            var directors = _context.Directors.AsNoTracking().Include(d => d.Movies).Take(10).ToList().OrderBy(x => x.Name);
 
             return Ok(await directors.ToPagedListAsync(pageNumber, itensForPage));
         }

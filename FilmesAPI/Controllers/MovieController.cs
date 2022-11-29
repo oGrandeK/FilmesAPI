@@ -1,12 +1,13 @@
 ﻿using FilmesAPI.Data;
 using FilmesAPI.Models;
-using FilmesAPI.Pagination;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
 namespace FilmesAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class MovieController : ControllerBase
@@ -25,7 +26,7 @@ namespace FilmesAPI.Controllers
             const int itensForPage = 3;
             int pageNumber = (page ?? 1);
 
-            return Ok(await _context.Movies.ToPagedListAsync(pageNumber, itensForPage));
+            return Ok(await _context.Movies.AsNoTracking().ToPagedListAsync(pageNumber, itensForPage));
         }
 
         // Get movie by Id
@@ -46,7 +47,7 @@ namespace FilmesAPI.Controllers
             const int itensForPage = 3;
             int pageNumber = (page ?? 1);
 
-            var movie = _context.Movies.Where(m => m.Title == title);
+            var movie = _context.Movies.AsNoTracking().Where(m => m.Title == title);
 
             if (movie is null) return NotFound("Can't find the movie");
 
@@ -60,7 +61,7 @@ namespace FilmesAPI.Controllers
             const int itensForPage = 3;
             int pageNumber = (page ?? 1);
 
-            var movies = _context.Movies.Where(m => m.Genre == genre).ToList().OrderBy(x => x.Title);
+            var movies = _context.Movies.AsNoTracking().Where(m => m.Genre == genre).ToList().OrderBy(x => x.Title);
 
             if (movies is null) return BadRequest();
 
@@ -73,7 +74,7 @@ namespace FilmesAPI.Controllers
         {
             const int itensForPage = 3;
             int pageNumber = (page ?? 1);
-            var movies = _context.Movies.Where(m => m.Director.Name == directorname).ToList().OrderBy(x => x.Director);
+            var movies = _context.Movies.AsNoTracking().Where(m => m.Director.Name == directorname).ToList().OrderBy(x => x.Director);
 
             return Ok(await movies.ToPagedListAsync(pageNumber, itensForPage));
         }
