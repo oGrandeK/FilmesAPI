@@ -7,7 +7,7 @@ using X.PagedList;
 
 namespace FilmesAPI.Controllers
 {
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class DirectorController : ControllerBase
